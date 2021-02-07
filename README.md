@@ -1,6 +1,3 @@
-# Dashboard
-
-> MDB Admin Dashboard
 
 ## Build Setup
 

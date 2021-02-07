@@ -29,28 +29,23 @@
 </template>
 
 <script>
-import { mdbNavbar,mdbIcon,mdbListGroup,mdbListGroupItem,waves,mdbNavbarBrand} from "mdbvue"; //mdbNavbarBrand,
+import { mdbNavbar,mdbIcon,mdbListGroup,mdbListGroupItem,waves,mdbNavbarBrand} from "mdbvue";
 import store from "@/store";
 export default {
   name: "Dasboard",
-  components: { mdbNavbar,mdbListGroup,mdbListGroupItem,mdbIcon,mdbNavbarBrand}, //,,mdbNavbarBrand
+  components: { mdbNavbar,mdbListGroup,mdbListGroupItem,mdbIcon,mdbNavbarBrand},
   data() {
     return {
       activeItem: 1
     };
   },
-  beforeMount() {
-    this.activeItem = this.$route.matched[0].props.default.page;
-  },
   created() {
     setInterval(function(){
-    //this.reloadValues()
-    if(store.dispatch('changeValues')){
-
-    // eslint-disable-next-line no-console
-    console.log('called the start function')
-    }
+    store.dispatch('changeValues')
     }, 10000)
+  },
+  beforeMount() {
+    this.activeItem = this.$route.matched[0].props.default.page;
   },
   mixins: [waves]
 };

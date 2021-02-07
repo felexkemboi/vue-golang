@@ -65,29 +65,8 @@ export default {
     mdbBarChart,
     mdbLineChart
   },
-  created() {
-    setInterval(function(){
-    //this.reloadValues()
-    if(store.dispatch('changeValues')){
-
-    // eslint-disable-next-line no-console
-    console.log('called the start function')
-    }
-    }, 10000)
-  },
   data () {
     return {
-      barChartData: {
-        labels: ['28th Jan', '28th Feb', '28th Mar', '28th Apr', '28th May', '28th Jun', '28th Jul'],
-        datasets: [
-          {
-            label: 'New Users in the last 7 days',
-            //data: [56, 0, 0, 0, 2, 0, 84],  //store.state.barChartData,  //
-            backgroundColor: '#00C851',
-            borderWidth: 1
-          }
-        ]
-      },
       barChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -110,16 +89,7 @@ export default {
           }]
         }
       },
-      lineChartData: {
-        labels: ['28th Jan', '28th Feb', '28th Mar', '28th Apr', '28th May', '28th Jun', '28th Jul'],
-        datasets: [
-          {
-            label: 'New Users in the last 7 days',
-            backgroundColor: '#ff4444' //,
-            //data: [56, 0, 0, 0, 2, 0, 84]//store.state.lineChartData
-          }
-        ]
-      },
+
       lineChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -141,32 +111,45 @@ export default {
     }
   },
   computed:{
-    bar(){
-      // eslint-disable-next-line no-console
-      return store.state.barChartData
+    lineDataFromState(){
+      return store.state.lineData
     },
-    // bar(){
-    //   return store.state.barChartData
-    // },
-    line(){
-      return store.state.lineChartData
+    barDataFromState(){
+      return store.state.barData
+    },
+    barChartData(){
+      let barChartDatum =  {
+      labels: ['28th Jan', '28th Feb', '28th Mar', '28th Apr', '28th May', '28th Jun', '28th Jul'],
+      datasets: [
+        {
+          label: 'New Users in the last 7 days',
+          data:  this.barDataFromState,
+          backgroundColor: '#00C851',
+          borderWidth: 1
+        }
+      ]
+    }
+    return barChartDatum
+    },
+    lineChartData(){
+      let lineChartDatum =  {
+      labels: ['28th Jan', '28th Feb', '28th Mar', '28th Apr', '28th May', '28th Jun', '28th Jul'],
+      datasets: [
+        {
+          label: 'New Users in the last 7 days',
+          backgroundColor: '#ff4444',
+          data:  this.lineDataFromState,
+        }
+      ]
+    }
+    return lineChartDatum
     }
   },
   watch:{
-    bar(newval){
-      // eslint-disable-next-line no-console
-      //console.log(newval, this.barChartData.datasets[0].data )
-      this.barChartData.datasets[0]['data'] = newval
-           // eslint-disable-next-line no-console
-      console.log(newval, this.barChartData.datasets[0].data )
+    barDataFromState(newval){
       return newval
     },
-    line(newval){
-            // eslint-disable-next-line no-console
-      //console.log(newval, this.barChartData.datasets[0].data )
-      this.lineChartData.datasets[0]['data'] = newval
-           // eslint-disable-next-line no-console
-      console.log(newval, this.lineChartData.datasets[0].data )
+    lineDataFromState(newval){
       return newval
     }
   }
