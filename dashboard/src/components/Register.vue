@@ -52,7 +52,7 @@
         this.user.username = ''
         this.user.income = ''
         this.user.bio = ''
-        this.$router.push('http://127.0.0.1:8080/dashboard')
+        this.$router.push('/dashboard')
       },
       getFileInputValue (event) {
         this.user.selectedFile = event.target.files[0];
