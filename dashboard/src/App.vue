@@ -1,34 +1,38 @@
 <template>
   <div class="flexible-content">
-    <mdb-navbar class="flexible-navbar blue" light position="top" scrolling>
-      <mdb-navbar-brand href="#" target="_blank" class="h4-responsive text-white"><mdb-icon icon="chevron-left" class="mr-3 ml-3"/>Badge</mdb-navbar-brand>
+    <mdb-navbar class="flexible-navbar blue text-white" position="top" >
+      <mdb-navbar-nav>
+        <mdb-nav-item href="#"  active >
+         <p class="text-white">
+           <mdb-icon icon="chevron-left" class="mr-3 ml-3"/>Badge
+          </p>
+        </mdb-nav-item>
+      </mdb-navbar-nav>
     </mdb-navbar>
+
     <div class="sidebar-fixed position-fixed">
       <mdb-list-group class="list-group-flush">
         <router-link to="/dashboard" @click.native="activeItem = 1">
           <mdb-list-group-item :action="true" :class="activeItem === 1 && 'active'"><mdb-icon icon="home"          class="mr-3"/>Home</mdb-list-group-item>
         </router-link>
-        <router-link to="#">
+        <router-link to="/404">
           <mdb-list-group-item :action="true" :class="activeItem === 2 && 'active'"><mdb-icon icon="user-friends"  class="mr-3" />Users</mdb-list-group-item>
         </router-link>
-        <router-link to="#">
+        <router-link to="/table">
           <mdb-list-group-item :action="true" :class="activeItem === 3 && 'active'"><mdb-icon icon="briefcase"     class="mr-3" />Business</mdb-list-group-item>
         </router-link>
-        <router-link to="#">
-          <mdb-list-group-item :action="true" :class="activeItem === 3 && 'active'"><mdb-icon icon="th-large"       class="mr-3" />Adverts</mdb-list-group-item>
+        <router-link to="/404">
+          <mdb-list-group-item :action="true" :class="activeItem === 4 && 'active'"><mdb-icon icon="th-large"       class="mr-3" />Adverts</mdb-list-group-item>
         </router-link>
-        <router-link to="#">
-          <mdb-list-group-item :action="true" :class="activeItem === 3 && 'active'"><mdb-icon icon="th-large"       class="mr-3" />Survey</mdb-list-group-item>
+        <router-link to="/404">
+          <mdb-list-group-item :action="true" :class="activeItem === 5 && 'active'"><mdb-icon icon="th-large"       class="mr-3" />Survey</mdb-list-group-item>
         </router-link>
-        <router-link to="#">
-          <mdb-list-group-item :action="true" :class="activeItem === 3 && 'active'"><mdb-icon icon="dollar-sign"    class="mr-3" />Account</mdb-list-group-item>
+        <router-link to="/404">
+          <mdb-list-group-item :action="true" :class="activeItem === 6 && 'active'"><mdb-icon icon="dollar-sign"    class="mr-3" />Account</mdb-list-group-item>
         </router-link>
-        <!-- <router-link to="/404"      @click.native="activeItem = 4">
-          <mdb-list-group-item :action="true" :class="activeItem === 4 && 'active'"><mdb-icon icon="exclamation"    class="mr-3"/>404</mdb-list-group-item>
-        </router-link> -->
-        <!-- <router-link to="/register" @click.native="activeItem = 5">
-          <mdb-list-group-item :action="true" :class="activeItem === 5 && 'active'"><mdb-icon icon="exclamation"    class="mr-3"/>Register</mdb-list-group-item>
-        </router-link> -->
+        <router-link to="/register">
+          <mdb-list-group-item :action="true" :class="activeItem === 7 && 'active'"><mdb-icon icon="user"          class="mr-3" />Register</mdb-list-group-item>
+        </router-link>
       </mdb-list-group>
     </div>
     <!-- /Sidebar  -->
@@ -41,11 +45,11 @@
 </template>
 
 <script>
-import { mdbNavbar,mdbIcon,mdbListGroup,mdbListGroupItem,waves,mdbNavbarBrand} from "mdbvue";
+import { mdbNavbar,mdbIcon,mdbListGroup,mdbListGroupItem,waves,mdbNavItem, mdbNavbarNav } from "mdbvue";
 import store from "@/store";
 export default {
   name: "Dasboard",
-  components: { mdbNavbar,mdbListGroup,mdbListGroupItem,mdbIcon,mdbNavbarBrand},
+  components: { mdbNavbar,mdbListGroup,mdbListGroupItem,mdbIcon,mdbNavItem,mdbNavbarNav},
   data() {
     return {
       activeItem: 1

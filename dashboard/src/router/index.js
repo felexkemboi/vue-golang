@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Dashboard from '@/components/Dashboard'
 import Profile from '@/components/Profile'
 import Register from '@/components/Register'
-import Tables from '@/components/Tables'
 import BadGateway from '@/components/BadGateway'
 
 
@@ -24,12 +23,6 @@ export default new Router({
       name: 'Profile',
       props: { page: 2 },
       component: Profile
-    },
-    {
-      path: '/tables',
-      name: 'Tables',
-      props: { page: 3 },
-      component: Tables
     },
     {
       path: '/404',

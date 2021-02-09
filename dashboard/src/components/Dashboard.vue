@@ -7,8 +7,8 @@
             <div class="admin-up">
               <mdb-icon icon="crop-alt" class="primary-color"/>
               <div class="data">
-                <p>SALES</p>
-                <h4><strong>200</strong></h4>
+                <p>Total Survey</p>
+                <h4><strong>7</strong></h4>
               </div>
             </div>
           </mdb-card>
@@ -18,8 +18,8 @@
             <div class="admin-up">
               <mdb-icon icon="copy" class="warning-color"/>
               <div class="data">
-                <p>SUBSCRIPTIONS</p>
-                <h4><strong>200</strong></h4>
+                <p>Total Posts</p>
+                <h4><strong>15</strong></h4>
               </div>
             </div>
           </mdb-card>

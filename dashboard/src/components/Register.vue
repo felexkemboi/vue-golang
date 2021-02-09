@@ -3,8 +3,8 @@
     <mdb-card-body>
         <p class="h4 text-center py-8 mb-5">Sign up</p>
         <div class="grey-text">
-          <mdb-input     label="Your name"          v-model="user.username"                  group type="text"     validate error="wrong"  success="right"                          /> <!--icon="user"-->
-          <mdb-input     label="Your Income"        v-model="user.income"                    group type="number"   validate error="wrong"  success="right"                         /> <!--icon="dollar-sign"-->
+          <mdb-input     label="Your name"          v-model="user.username"                  group type="text"     validate error="wrong"  success="right"                          />
+          <mdb-input     label="Your Income"        v-model="user.income"                    group type="number"   validate error="wrong"  success="right"                         />
           <mdb-textarea  label="Your Bio"           v-model="user.bio"                       group type="textarea" validate error="wrong"  success="right"    size="sm" :rows="2" /> <!--icon="pencil"-->
           <p>Add Profile Picture</p>
           <input type="file" @change="getFileInputValue">
@@ -12,26 +12,22 @@
         <div class="text-center py-4 mt-3">
           <mdb-btn color="cyan" type="submit" @click="submit">Register</mdb-btn>
         </div>
-
+        <div v-if="show">
+          <mdb-alert color="success">
+            {{ user }}
+          </mdb-alert>
+        </div>
     </mdb-card-body>
+
   </mdb-card>
 </template>
 
 <script>
-  import { mdbInput, mdbBtn, mdbCard, mdbCardBody,mdbTextarea } from 'mdbvue'; //,mdbFileInput
-  // import mdbFileUpload from 'mdb-file-upload';
-
+  import { mdbInput, mdbBtn, mdbCard, mdbCardBody,mdbTextarea, mdbAlert } from 'mdbvue';
 
   export default {
     name: 'Register',
-    components: {
-      mdbInput,
-      mdbBtn,
-      mdbCard,
-      mdbCardBody,
-      mdbTextarea
-
-    },
+    components: {mdbInput,mdbBtn,mdbCard,mdbCardBody,mdbTextarea, mdbAlert},
     data(){
       return {
         user : {
@@ -39,16 +35,21 @@
           income:"",
           bio:"",
           filePath :"",
-          selectedFile : null
-        }
+          selectedFile : null,
+        },
+        show:false
       }
     },
     methods:{
-      submit(){
+      async submit(){
         console.log(this.user.username)
         console.log(this.user.income)
         console.log(this.user.bio)
         console.log(this.user.filePath)
+        this.show = true
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        await delay(5000);
+        //setTimeout(function(){ this.show = false; }, 10000);
         this.user.username = ''
         this.user.income = ''
         this.user.bio = ''
